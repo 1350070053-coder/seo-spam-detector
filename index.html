@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEO Spam Detection & Prevention Suite - Topic 18</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="brand">
+                <i class="fa-solid fa-shield-halved logo-icon"></i>
+                <h2>SEO Shield <span>Topic 18</span></h2>
+            </div>
+            <nav class="menu">
+                <a href="#" class="active"><i class="fa-solid fa-chart-line"></i> Dashboard Quét Spam</a>
+                <a href="#prevention"><i class="fa-solid fa-lock"></i> Biện Pháp Ngăn Chặn</a>
+                <a href="#disavow"><i class="fa-solid fa-file-export"></i> Công Cụ Tạo Disavow</a>
+            </nav>
+            <div class="sidebar-footer">
+                <p>Thực hành SEO - HCMUNRE</p>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <header class="top-header">
+                <h1>Hệ Thống Phát Hiện & Xử Lý SEO Spam Techniques</h1>
+                <span class="user-badge"><i class="fa-solid fa-user-shield"></i> Group Admin</span>
+            </header>
+
+            <!-- KPI Cards -->
+            <div class="kpi-grid">
+                <div class="kpi-card">
+                    <div class="kpi-icon blue"><i class="fa-solid fa-magnifying-glass"></i></div>
+                    <div class="kpi-info">
+                        <h3>Tổng Kiểm Tra</h3>
+                        <p id="kpiTotal">0</p>
+                    </div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-icon red"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                    <div class="kpi-info">
+                        <h3>Số Mẫu Phát Hiện Spam</h3>
+                        <p id="kpiSpam">0</p>
+                    </div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-icon green"><i class="fa-solid fa-circle-check"></i></div>
+                    <div class="kpi-info">
+                        <h3>Độ An Toàn Hệ Thống</h3>
+                        <p id="kpiSafety">100%</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scanner Section -->
+            <section class="card content-card">
+                <h2><i class="fa-solid fa-radar"></i> Quét & Phân Tích Nội Dung / Backlink Spam</h2>
+                <p class="desc">Dán đoạn bình luận, danh sách backlink hoặc cấu trúc URL nghi ngờ vào ô dưới đây để phân tích các dấu hiệu Spam.</p>
+                
+                <textarea id="inputText" placeholder="Nhập nội dung bình luận, URL backlink hoặc văn bản cần phân tích tại đây... (Ví dụ: Buy cheap backlinks at http://spam-pbn.com)"></textarea>
+                
+                <div class="action-bar">
+                    <button class="btn btn-primary" onclick="runAnalysis()"><i class="fa-solid fa-bolt"></i> Chạy Phân Tích Spam</button>
+                    <button class="btn btn-secondary" onclick="clearInput()"><i class="fa-solid fa-rotate-left"></i> Làm Mới</button>
+                </div>
+
+                <!-- Analysis Result Panel -->
+                <div id="resultPanel" class="result-panel hidden">
+                    <div id="statusBadge" class="status-badge"></div>
+                    <div class="score-meter">
+                        <span>Chỉ số Rủi ro Spam (Spam Risk Score):</span>
+                        <div class="progress-bar">
+                            <div id="progressFill" class="progress-fill"></div>
+                        </div>
+                        <strong id="scorePercent">0%</strong>
+                    </div>
+
+                    <h3><i class="fa-solid fa-list-check"></i> Chi Tiết Dấu Hiệu Phát Hiện:</h3>
+                    <ul id="issueDetails" class="issue-list"></ul>
+                </div>
+            </section>
+
+            <!-- Prevention & Remediation -->
+            <section id="prevention" class="card content-card">
+                <h2><i class="fa-solid fa-shield-virus"></i> Phương Án Xử Lý & Ngăn Chặn Spam (Remediation)</h2>
+                <div class="code-grid">
+                    <div class="code-box">
+                        <h3>1. Chống Comment Spam & Link Juice Drain</h3>
+                        <p>Thêm thuộc tính <code>rel="ugc nofollow"</code> vào các liên kết do người dùng tạo:</p>
+                        <pre><code>&lt;a href="https://example-spam.com" rel="ugc nofollow"&gt;Comment Link&lt;/a&gt;</code></pre>
+                    </div>
+                    <div class="code-box">
+                        <h3>2. Chặn Bot Cào Dữ Liệu (Content Scraping)</h3>
+                        <p>Cấu hình file <code>.htaccess</code> chặn User-Agents rác:</p>
+                        <pre><code>RewriteEngine On
+RewriteCond %{HTTP_USER_AGENT} (HTTrack|YandexBot|AhrefsBot) [NC]
+RewriteRule .* - [F,L]</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Disavow Export Section -->
+            <section id="disavow" class="card content-card">
+                <h2><i class="fa-solid fa-file-code"></i> Công Cụ Export File Disavow Links Chuẩn Google</h2>
+                <p>Tạo nhanh file <code>disavow.txt</code> để gửi lên Google Search Console từ chối các domain độc hại:</p>
+                <textarea id="disavowList" placeholder="Nhập danh sách domain spam (mỗi domain 1 dòng), ví dụ:&#10;spamsite1.com&#10;badlinks-pbn.net"></textarea>
+                <button class="btn btn-success" onclick="exportDisavow()"><i class="fa-solid fa-download"></i> Tải File disavow.txt</button>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
